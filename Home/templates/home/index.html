@@ -1,13 +1,71 @@
-<!DOCTYPE html>
-<head>
-<title> Django </title> 
-<h1> The static content</h1>
-</head>
-<body>
+{% extends "base.html" %}
+{% block start %}
     <h1>
-        Tables
+        This is the main index page
+
     </h1>
-<p> This is the static paragraph
-    {{peoples}} </p>
-</body>
-</html>
+    <a href="/contact/" > Contact |</a>
+    <a href="/about/"> About</a>
+    <div  class="container">
+        <style>
+            table, th, td {
+              border: 1px solid black;
+            }
+            </style>
+        <table>
+            <thead>
+              <tr>
+                <th scope="col">S.N</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Can Vote</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+                {% for people in peoples %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{people.name}}</td>
+                <td>{{people.age}}</td> 
+                <td>{% if people.age >= 18 %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}
+
+                </td> 
+            </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <div class="container">
+        <table class="table" style="border: 1px solid black;
+        border-collapse: collapse;">
+            
+            <thead>
+              <tr>
+                <th scope="col">S.N</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Sex</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+              <tr>
+                <th scope="row">{{loop.counter}}</th>
+                <td>{{author.name}}</td>
+                <td>{{author.age}}</td>
+                <td>{{author.sex}}</td>
+              </tr>
+                {% endfor %}    
+            </tbody>
+          </table>
+    </div>
+{% endblock %}
+
+{% block title %}
+Index page
+        {% endblock %}
