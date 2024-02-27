@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block start %}
+    <h1>
+        Welcome to the Author page
+    </h1>
+    <a href="/contact/" > Contact |</a>
+    <a href="/about/"> About | </a>
+    <a href="/"> Home </a>
+    <br></br>
+    
+    <div class="container">
+        <table class="table" style="border: 1px solid black;
+        border-collapse: collapse;">
+            
+            <thead>
+              <tr>
+                <th scope="col">S.N</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Sex</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+              <tr>
+                <th scope="row">{{loop.counter}}</th>
+                <td>{{author.name}}</td>
+                <td>{{author.age}}</td>
+                <td>{{author.sex}}</td>
+                <td>{{author.email}}</td>
+              </tr>
+                {% endfor %}    
+            </tbody>
+          </table>
+    </div>
+{% endblock %}
+
+{% block title %}
+Author page
+        {% endblock %}

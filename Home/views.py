@@ -19,8 +19,7 @@ def about(request):
       return render(request, "home/about.html")
 
 def another_demo(request):
-        print('hihihihihih')
         return HttpResponse ("<h1> Welcome its just a testing one, sorry to bother </h1>")
 def Author(request):
-      authors=Author.objects.all()
-      return render(request, "home/index.html", context={"authors":authors})
+      # author_vara=Author.objects.all()
+      return render(request, "home/author.html", context={"authors":"authors"})
